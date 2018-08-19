@@ -1,5 +1,45 @@
 # Readme
 
+#### Also enable all SQL Statement Log
+
+- ref: https://docs.djangoproject.com/en/dev/topics/logging/
+- ref: https://docs.djangoproject.com/en/dev/topics/logging/#django-db-backends
+
+- if you add below configure in your settings.py
+
+```
+LOGGING = {
+    'version': 1,
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+        }
+    }
+}
+```
+
+- and you can get below information
+
+```
+>>> book.models.Storage.objects.all()
+(0.000) SELECT "book_storage"."id", "book_storage"."label", "book_storage"."description" FROM "book_storage"  LIMIT 21; args=()
+<QuerySet [<Storage: Storage object (1)>, <Storage: Storage object (2)>]>
+>>> 
+```
+
 #### Prerequisite
 
 ```
