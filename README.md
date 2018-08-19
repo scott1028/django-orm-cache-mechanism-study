@@ -1,5 +1,14 @@
 # Readme
 
+#### After you clone this project and pip install completely, you just do below
+
+```
+./manage.py migrate
+./manage.py loaddata book/fixtures/Storage.json
+  ...
+./manage.py runserver  # or shell
+```
+
 #### Also enable all SQL Statement Log
 
 - ref: https://docs.djangoproject.com/en/dev/topics/logging/
