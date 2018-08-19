@@ -49,3 +49,21 @@ INSTALLED_APPS = [
 # after you create fixturedata for initial data, you might wonder to load them. ex: ./manage.py loaddata book/fixtures/Storage.json
 # manage.py loaddata <fixturename> [<fixturename>]
 ```
+
+#### Entering interactive console for your project, Test ORM Cache mechanism
+
+- In same object instance or pointer, django will use cached data after secondary operation.
+
+```
+./manage.py shell
+```
+
+```
+>>> import book.models
+>>> qs = book.models.Storage.objects.all()
+
+>>> print([row for p in qs]) # Evaluate the query set, retrieve from database directly
+>>> print([row for p in qs]) # Re-use the cache from the evaluation without connect to database
+```
+
+![Alt text](https://raw.githubusercontent.com/scott1028/django-orm-cache-mechanism-study/master/orm-cache-mechanism.png "orm-cache-mechanism.png")
