@@ -1,0 +1,18 @@
+[
+  {
+    "model": "book.Storage",
+    "pk": 1,
+    "fields": {
+      "label": "My First Book",
+      "description": "My First Description"
+    }
+  },
+  {
+    "model": "book.Storage",
+    "pk": 2,
+    "fields": {
+      "label": "My Second Book",
+      "description": "My Second Description"
+    }
+  }
+]
